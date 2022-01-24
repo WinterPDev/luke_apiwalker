@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Link, Switch, Route} from 'react-router-dom';
+import SearchForm from './components/SearchForm';
+import SearchResult from './components/SearchResult';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <Switch>
+        <Route exact path="/" exact component={SearchForm} />
+        <Route exact path="/:resource/:id">
+          <SearchForm />
+          <SearchResult />
+        </Route>
+      </Switch>
+      
+      </BrowserRouter>
+
     </div>
   );
 }
